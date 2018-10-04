@@ -1,5 +1,5 @@
 def menu()
-  puts "Bem-vindo ao Task List! Escolha uma opção no menu: \n"
+  puts "Escolha uma opção no menu: \n"
   puts '[1] Inserir uma tarefa'
   puts '[2] Ver todas as tarefas'
   puts '[3] Clear'
@@ -9,6 +9,7 @@ def menu()
   gets.to_i
 end
 
+puts "Bem-vindo ao Task List!"
 opcao = menu()
 tarefa = ""
 tarefas = []
