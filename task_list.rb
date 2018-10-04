@@ -23,7 +23,10 @@ while opcao != 4 do
     puts 'Tarefa cadastrada: ' + tarefa
   elsif opcao == 2
     puts
-    puts tarefas
+    tarefas.each_with_index do |tarefa, i|
+      puts "##{i} - #{tarefa}"
+    end
+
   elsif opcao == 3
     system('clear')
   else
