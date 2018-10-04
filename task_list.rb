@@ -1,12 +1,15 @@
-puts "Bem-vindo ao Task List! Escolha uma opção no menu: \n"
-puts '[1] Inserir uma tarefa'
-puts '[2] Ver todas as tarefas'
-puts '[3] Clear'
-puts '[4] Sair'
-puts
-print 'Opção escolhida: '
+def menu()
+  puts "Bem-vindo ao Task List! Escolha uma opção no menu: \n"
+  puts '[1] Inserir uma tarefa'
+  puts '[2] Ver todas as tarefas'
+  puts '[3] Clear'
+  puts '[4] Sair'
+  puts
+  print 'Opção escolhida: '
+  gets.to_i
+end
 
-opcao = gets.to_i
+opcao = menu()
 tarefa = ""
 tarefas = []
 
@@ -29,12 +32,5 @@ while opcao != 4 do
   puts
   puts
   puts
-  puts "Bem-vindo ao Task List! Escolha uma opção no menu: \n"
-  puts '[1] Inserir uma tarefa'
-  puts '[2] Ver todas as tarefas'
-  puts '[3] Clear'
-  puts '[4] Sair'
-  puts
-  print 'Opção escolhida: '
-  opcao = gets.to_i
+  opcao = menu()
 end
