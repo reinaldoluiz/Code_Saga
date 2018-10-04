@@ -2,8 +2,9 @@ def menu()
   puts "Escolha uma opção no menu: \n"
   puts '[1] Inserir uma tarefa'
   puts '[2] Ver todas as tarefas'
-  puts '[3] Clear'
-  puts '[4] Sair'
+  puts '[3] Procura'
+  puts '[4] Clear'
+  puts '[5] Sair'
   puts
   print 'Opção escolhida: '
   gets.to_i
@@ -13,8 +14,9 @@ puts "Bem-vindo ao Task List!"
 opcao = menu()
 tarefa = ""
 tarefas = []
+elementos_encontrados = []
 
-while opcao != 4 do
+while opcao != 5 do
   if opcao == 1
     print 'Digite sua tarefa: '
     tarefa = gets
@@ -26,8 +28,15 @@ while opcao != 4 do
     tarefas.each_with_index do |tarefa, i|
       puts "##{i} - #{tarefa}"
     end
-
   elsif opcao == 3
+    print 'Qual tarefa deseja encontrar: '
+    procura = gets
+    tarefas.each do |tarefa|
+      if tarefa == procura
+        elementos_encontrados << tarefa
+      end
+    end
+  elsif opcao == 4
     system('clear')
   else
     puts
