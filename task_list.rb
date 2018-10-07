@@ -14,42 +14,49 @@ end
 puts "Bem-vindo ao Task List!"
 opcao = menu()
 elementos_encontrados = []
-tarefas = []
+tarefa  = {}
 while opcao != 6 do
   if opcao == 1
     print 'Digite sua tarefa: '
     nome = gets
-    tarefa = {"#{nome}" => false}
-    tarefas << tarefa
+    tarefa[nome] = false
     puts
     puts "Tarefa cadastrada: #{tarefa}"
   elsif opcao == 2
     puts
-    tarefas.each do |i|
-      p " #{i}"
+    tarefa.each_with_index do |(key, value),i|
+      p " #{i} - #{key.strip}"
     end
   elsif opcao == 3
     print 'Qual tarefa deseja encontrar: '
     procura = gets
-    tarefas.each do |(key,value)|
-      if tarefa[key] == procura
-        elementos_encontrados << tarefa
+    tarefa.each_with_index do |(key, value),i|
+      if key == procura
+        p " #{i} - #{key.strip}"
       end
     end
   elsif opcao == 4
-    print 'Alterar status da tarefa: '
-    alterar = gets
-    tarefas.each do |tarefa|
-      if tarefa == procura
-        puts "##{i} - #{tarefa[:nome]} - #{tarefa[:status]}"
-        puts
+    tarefa.each_with_index do |(key, value), i|
+      p "#{i} - #{key.strip} #{value}"
+    end
+    puts 'Selecione a tarefa que deseja alterar(escolher via o número)'
+    tarefa_index = gets.to_i
+
+    tarefa.each_with_index do |(key, value),i|
+      if i == tarefa_index
+        p " #{i} - #{key.strip}"
         puts 'Deseja alterar o status da tarefa (Y/N)'
         resp = gets
-        if resp == 'Y'
-          tarefa[:status] = true;
+        if resp.strip === "Y"
+          if tarefa[key] == true
+            tarefa[key] = false
+          else
+            tarefa[key] = true
+          end
+          p " #{i} - #{key.strip} - Estado alterado"
+        else
+          p "resposta incorreta"
         end
-      else
-        puts 'Elemento não encontrado'
       end
     end
   elsif opcao == 5
