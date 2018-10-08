@@ -15,6 +15,9 @@ puts "Bem-vindo ao Task List!"
 opcao = menu()
 elementos_encontrados = []
 tarefa  = {}
+File.open('task.txt','r').each do |file|
+  tarefa[file] = false
+end
 while opcao != 6 do
   if opcao == 1
     print 'Digite sua tarefa: '
@@ -69,4 +72,9 @@ while opcao != 6 do
   puts
   puts
   opcao = menu()
+end
+File.open('task.txt', 'a') do |file|
+  tarefa.each_with_index do |(key, value), i|
+    file.write("#{key}")
+  end
 end
